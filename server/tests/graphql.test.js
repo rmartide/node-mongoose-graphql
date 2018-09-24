@@ -78,6 +78,27 @@ describe('graphql operations', () => {
                 wish(user.teams[0].country === 'España');
             })
             .end(done);
-    })
+    });
+
+    it('should get all users', (done) => {
+        const query = `{
+            users
+            { 
+                name
+            }
+        }
+        `;
+        request(app)
+            .post(URL)
+            .send({ query })
+            .expect(200)
+            .expect(res => {
+                var users = res.body.data.users;
+                wish(users.length === 2);
+                wish(users[0].name === 'Toñito');
+                wish(users[1].name === 'Juanito');
+            })
+            .end(done);
+    });
 
 })
