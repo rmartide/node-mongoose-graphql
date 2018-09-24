@@ -36,6 +36,21 @@ describe('graphql operations', () => {
             .end(done);
     });
 
+    it('should not create a null user', (done) => {
+        const query = `
+            mutation 
+            {
+                addUser(user: { name: "" })
+                { _id, name }
+            }
+        `;
+        request(app)
+            .post(URL)
+            .send({ query })
+            .expect(200)
+            .end(done);
+    });
+
     it('should get a user with only name', (done) => {
         const query = `{
             getUser(name: "Toñito" )

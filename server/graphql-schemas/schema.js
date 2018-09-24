@@ -1,4 +1,4 @@
-const { GraphQLInterfaceType, GraphQLSchema, GraphQLObjectType, GraphQLInputObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLList } = require('graphql');
+const { GraphQLSchema, GraphQLObjectType, GraphQLInputObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLList } = require('graphql');
 const User = require('./../models/User');
 const mongoose = require('mongoose');
 

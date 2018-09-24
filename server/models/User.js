@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 const { TeamSchema } = require('./Team');
 
 const UserSchema = new mongoose.Schema({
-    name: String,
+    name: {
+        type: String,
+        required: [true, 'User name required, can not be empty or null']
+    },
     teams: [TeamSchema]
 });
 
