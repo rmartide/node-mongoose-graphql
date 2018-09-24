@@ -1,2 +1,7 @@
 const mongoose = require('mongoose');
-mongoose.connect(`mongodb://localhost:${process.env.PORT}/GraphQL`,{useNewUrlParser: true});
+var db = 'GraphQL'
+if(process.env.NODE_ENV === 'test') {
+    db = 'GraphQLTesting';
+}
+console.log(db);
+mongoose.connect(`mongodb://localhost:${process.env.PORT}/${db}`,{useNewUrlParser: true});
