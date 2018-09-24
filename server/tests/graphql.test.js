@@ -5,8 +5,13 @@ const request = require('supertest');
 
 const URL = '/graphql';
 
-beforeEach(() => {
-    User.deleteMany({});
+beforeEach(function() {
+    this.timeout(0);
+    return User.deleteMany({}).then(() => {
+        var p1 = User.create({name: 'Toñito'});
+        var p2 = User.create({name: 'Juanito'});
+        return Promise.all([p1, p2]);
+    });
 })
 
 describe('graphql operations', () => {
