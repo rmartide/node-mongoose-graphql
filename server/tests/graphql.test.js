@@ -101,4 +101,55 @@ describe('graphql operations', () => {
             .end(done);
     });
 
-})
+    it('should add a team to a user', (done) => {
+        const query = `mutation
+        {
+            addTeamToUser(user: {name: "Toñito"}, team: {name: "Getafe", country: "España"})
+            { 
+                name, 
+                teams {
+                    name,
+                    country
+                }
+            }
+        }
+        `;
+        request(app)
+            .post(URL)
+            .send({ query })
+            .expect(200)
+            .expect(res => {
+                var user = res.body.data.addTeamToUser;
+                wish(user.name === "Toñito");
+                wish(user.teams.length === 1);
+                wish(user.teams[0].name === 'Getafe');
+                wish(user.teams[0].country === 'España');
+            })
+            .end(done);
+    });
+
+    it('should not add an existent team to a user', (done) => {
+        const query = `mutation
+        {
+            addTeamToUser(user: {name: "Juanito"}, team: {name: "Real Madrid", country: "España"})
+            { 
+                name, 
+                teams {
+                    name,
+                    country
+                }
+            }
+        }
+        `;
+        request(app)
+            .post(URL)
+            .send({ query })
+            .expect(200)
+            .expect(res => {
+                var user = res.body.data.addTeamToUser;
+                wish(user.name === "Juanito");
+                wish(user.teams.length === 1);
+            })
+            .end(done);
+    });
+});
