@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server/server.js",
-    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha server/**/*.test.js",
+    "test": "SET \"NODE_ENV=test\" && mocha server/**/*.test.js",
     "test-watch": "nodemon --exec \"npm test\""
   },
   "repository": {
@@ -19,15 +19,15 @@
   },
   "homepage": "https://github.com/rmartide/node-mongoose-graphql#readme",
   "dependencies": {
-    "express": "^4.16.3",
-    "express-graphql": "^0.6.12",
-    "graphql": "^14.0.2",
-    "mongoose": "^5.2.16"
+    "express": "^4.17.1",
+    "express-graphql": "^0.11.0",
+    "graphql": "^15.3.0",
+    "mongoose": "^5.9.25"
   },
   "devDependencies": {
-    "expect": "^23.6.0",
-    "mocha": "^5.2.0",
-    "supertest": "^3.3.0",
+    "expect": "^26.1.0",
+    "mocha": "^8.0.1",
+    "supertest": "^4.0.2",
     "wish": "^1.0.1"
   }
 }

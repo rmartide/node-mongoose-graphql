@@ -53,7 +53,7 @@ describe('graphql operations', () => {
 
     it('should get a user with only name', (done) => {
         const query = `{
-            getUser(name: "Toñito" )
+            getUser(name: "Toñito")
             { name }
         }
         `;
@@ -71,7 +71,7 @@ describe('graphql operations', () => {
 
     it('should get a user with his teams', (done) => {
         const query = `{
-            getUser(name: "Juanito" )
+            getUser(name: "Juanito")
             { 
                 name, 
                 teams {
